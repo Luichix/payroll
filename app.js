@@ -8,8 +8,11 @@ const loginRouter = require('./controllers/login')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
+const mysql = require('mysql')
 
 logger.info('connecting to', config.MONGODB_URI)
+logger.info('connecting to', config.MySQL.database.host)
+
 
 mongoose.connect(config.MONGODB_URI)
   .then(() => {
@@ -17,6 +20,14 @@ mongoose.connect(config.MONGODB_URI)
   })
   .catch((error) => {
     logger.error('error connecting to MongoDB', error.message)
+  })
+
+mysql.createConnection(config.MySQL.database)
+  .then(() => {
+    logger.info('connected to MySQL')
+  })
+  .catch((error) => {
+    logger.error('error connecting to MySQL', error.message)
   })
 
 app.use(cors())
