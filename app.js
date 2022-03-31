@@ -22,13 +22,15 @@ mongoose.connect(config.MONGODB_URI)
     logger.error('error connecting to MongoDB', error.message)
   })
 
-mysql.createConnection(config.MySQL.database)
-  .then(() => {
-    logger.info('connected to MySQL')
-  })
-  .catch((error) => {
-    logger.error('error connecting to MySQL', error.message)
-  })
+const conexion = mysql.createConnection(config.MySQL.database)
+
+conexion.connect(function(error) {
+  if(error){
+    logger.error('error connecting to MySQL', error.stack)
+    return
+  }
+  logger.info('connecting to MySQL', conexion.threadId)
+})
 
 app.use(cors())
 app.use(express.static('build'))

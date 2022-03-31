@@ -19,6 +19,7 @@
     "express": "^4.17.3",
     "express-async-error": "^0.0.2",
     "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.9",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
