@@ -1,3 +1,5 @@
+CREATE DATABASE database_payroll;
+
 USE database_payroll;
 
 CREATE TABLE `database_payroll`. `users`(
