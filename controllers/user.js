@@ -1,28 +1,24 @@
-const bcrypt = require('bcrypt')
 const usersRouter = require('express').Router()
-const User = require('../models/user')
+const { pool } = require('../api/pool')
+const { insert, read } = require('../models/users')
 
-usersRouter.get('/', async (request, response) => {
-  const users = await User.find({})
-  response.json(users)
-})
+// usersRouter.get('/', async (request, response) => {
+//   const users = await User.find({})
+//   response.json(users)
+// })
 
-usersRouter.post('/', async (request, response) => {
-  const body = request.body
-
-  const saltRounds = 10
-  const passwordHash = await bcrypt.hash(body.password, saltRounds)
-
-  const user = new User({
-    username: body.username,
-    name: body.name,
-    passwordHash
+usersRouter.get('/', (request, response) => {
+  read(pool, result => {
+    response.json(result)
   })
-
-  const savedUser = await user.save()
-
-  response.json(savedUser)
-
 })
+
+usersRouter.post('/', (request, response) => {
+  insert(pool,{ username: 'Manu', password: 'kirito', fullname: 'Manu Rex' },
+    result => {
+      response.json(result)
+    })
+})
+
 
 module.exports = usersRouter
