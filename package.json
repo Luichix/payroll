@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "cross-env NODE-ENV=development nodemon index.js",
-    "test": "cross-env NODE_ENV= test jest --verbose --runInBand",
+    "test": "cross-env NODE_ENV=test jest --verbose --runInBand",
     "lint": "eslint . --fix"
   },
   "author": "Luichix",
