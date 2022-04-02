@@ -11,10 +11,7 @@ CREATE TABLE `database_payroll`.`USER` (
   `LowDate` DATE NULL,
   PRIMARY KEY (`ID_USER`))
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-
-/* ALTER TABLE USER ADD Status VARCHAR(15);
+DEFAULT CHARACTER SET = utf8mb4;
 
 ALTER TABLE `database_payroll`.`USER` 
-CHANGE COLUMN `Status` `Status` VARCHAR(15) NOT NULL ; */
+COLLATE = utf8mb4_general_ci ;

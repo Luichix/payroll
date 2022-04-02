@@ -32,4 +32,7 @@ CREATE TABLE `database_payroll`.`REGIMENT` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4;
+
+ALTER TABLE `database_payroll`.`REGIMENT` 
+COLLATE = utf8mb4_general_ci ;

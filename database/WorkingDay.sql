@@ -1,15 +1,16 @@
 CREATE TABLE `database_payroll`.`WORKINGDAY` (
   `ID_WORKINGDAY` INT NOT NULL AUTO_INCREMENT,
   `WorkingDay` VARCHAR(25) NOT NULL,
-  `WeekdayHour` TIME NOT NULL,
+  `DailyHour` TIME NOT NULL,
   `Entry` TIME NOT NULL,
   `Break` TIME NOT NULL,
   `Exit` TIME NOT NULL,
   `SatHour` TIME NOT NULL,
   `SatEntry` TIME NOT NULL,
+  `SatBreak` TIME NOT NULL, 
   `SatExit` TIME NOT NULL,
-  `WeeklyShift` TIME NOT NULL,
   `SatExempted` TIME NOT NULL,
+  `WeeklyShift` TIME NOT NULL,
   `Description` VARCHAR(150) NOT NULL,
   `Status` VARCHAR(15) NOT NULL,
   `AddDate` DATE NOT NULL,
@@ -38,4 +39,7 @@ CREATE TABLE `database_payroll`.`WORKINGDAY` (
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+DEFAULT CHARACTER SET = utf8mb4;
+
+ALTER TABLE `database_payroll`.`WORKINGDAY` 
+COLLATE = utf8mb4_general_ci ;
